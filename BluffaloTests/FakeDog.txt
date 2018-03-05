@@ -30,8 +30,8 @@ struct DogStub<T>: Hashable, Equatable {
         return lhs.method == rhs.method
     }
 
-    public static func bark(_ volume: Int, _ tenacity: Int) -> DogStub<Any> {
-        return DogStub<Any>(method: .bark_volume_tenacity(volume, tenacity))
+    public static func bark(_ volume: Int, _ tenacity: Int) -> DogStub<Void> {
+        return DogStub<Void>(method: .bark_volume_tenacity(volume, tenacity))
     }
 
 }
@@ -42,6 +42,9 @@ struct DogReturn<T> {
 
     func andReturn(_ value: T) {
         fake.setReturnFor(stub: stub, value: value)
+    }
+    func andDo(_ closure: @escaping () -> T) {
+        fake.setClosureFor(stub: stub, closure: closure)
     }
 }
 
@@ -58,6 +61,7 @@ class _FakeDog: Dog {
     // MARK: - Stub Helpers
 
     var stubs = [(Any, Any)]()
+    var closures = [(Any, Any)]()
     static var classStubs = [AnyHashable: Any]()
     private var methodCalls = [Any]()
     private static var classMethodCalls = [Any]()
@@ -75,6 +79,19 @@ class _FakeDog: Dog {
 
     func setReturnFor<T>(stub: DogStub<T>, value: Any) {
         stubs.append((stub, value))
+    }
+
+    func closureFor<T>(stub: DogStub<T>)-> Any? {
+        for tuple in closures {
+            if tuple.0 is DogStub<T> {
+                return tuple.1
+            }
+        }
+        return nil
+    }
+
+    func setClosureFor<T>(stub: DogStub<T>, closure: @escaping () -> T) {
+        closures.append((stub, closure))
     }
 
     func stub<T>(_ stub: DogStub<T>) -> DogReturn<T> {
@@ -116,8 +133,11 @@ class _FakeDog: Dog {
     // MARK: - Method Stubs
 
     override func bark(_ volume: Int, _ tenacity: Int) {
-        let stub = DogStub<Any>(method: .bark_volume_tenacity(volume, tenacity))
+        let stub = DogStub<Void>(method: .bark_volume_tenacity(volume, tenacity))
         methodCalls.append(stub)
+        if let closure = closureFor(stub: stub) as? () -> () {
+            closure()
+        }
     }
 
 }

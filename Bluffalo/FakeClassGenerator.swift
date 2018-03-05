@@ -341,7 +341,7 @@ class FakeClassGenerator {
             if let _ = enumNameForMethod(method: method) {
                 code += tab + "public static func " + method.nameWithExternalNames
                 
-                var stubGeneric = "Any"
+                var stubGeneric = "Void"
                 if let returnType = method.returnType {
                     stubGeneric = returnType
                 }
@@ -450,18 +450,19 @@ class FakeClassGenerator {
         code += tab + "}\n\n"
         
         code += """
-        func closureFor<T>(stub: \(className)Stub<T>)-> Any? {
-            for tuple in closures {
-                if tuple.0 is \(className)Stub<T> {
-                    return tuple.1
+            func closureFor<T>(stub: \(className)Stub<T>)-> Any? {
+                for tuple in closures {
+                    if tuple.0 is \(className)Stub<T> {
+                        return tuple.1
+                    }
                 }
+                return nil
             }
-            return nil
-        }
-        
-        func setClosureFor<T>(stub: \(className)Stub<T>, closure: @escaping () -> T) {
-            closures.append((stub, closure))
-        }
+
+            func setClosureFor<T>(stub: \(className)Stub<T>, closure: @escaping () -> T) {
+                closures.append((stub, closure))
+            }
+
 
         """
         

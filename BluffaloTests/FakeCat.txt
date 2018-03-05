@@ -30,8 +30,8 @@ struct CatDelegateStub<T>: Hashable, Equatable {
         return lhs.method == rhs.method
     }
 
-    public static func catMeowed() -> CatDelegateStub<Any> {
-        return CatDelegateStub<Any>(method: .catMeowed())
+    public static func catMeowed() -> CatDelegateStub<Void> {
+        return CatDelegateStub<Void>(method: .catMeowed())
     }
 
 }
@@ -42,6 +42,9 @@ struct CatDelegateReturn<T> {
 
     func andReturn(_ value: T) {
         fake.setReturnFor(stub: stub, value: value)
+    }
+    func andDo(_ closure: @escaping () -> T) {
+        fake.setClosureFor(stub: stub, closure: closure)
     }
 }
 
@@ -58,6 +61,7 @@ class _FakeCatDelegate: CatDelegate {
     // MARK: - Stub Helpers
 
     var stubs = [(Any, Any)]()
+    var closures = [(Any, Any)]()
     static var classStubs = [AnyHashable: Any]()
     private var methodCalls = [Any]()
     private static var classMethodCalls = [Any]()
@@ -75,6 +79,19 @@ class _FakeCatDelegate: CatDelegate {
 
     func setReturnFor<T>(stub: CatDelegateStub<T>, value: Any) {
         stubs.append((stub, value))
+    }
+
+    func closureFor<T>(stub: CatDelegateStub<T>)-> Any? {
+        for tuple in closures {
+            if tuple.0 is CatDelegateStub<T> {
+                return tuple.1
+            }
+        }
+        return nil
+    }
+
+    func setClosureFor<T>(stub: CatDelegateStub<T>, closure: @escaping () -> T) {
+        closures.append((stub, closure))
     }
 
     func stub<T>(_ stub: CatDelegateStub<T>) -> CatDelegateReturn<T> {
@@ -116,8 +133,11 @@ class _FakeCatDelegate: CatDelegate {
     // MARK: - Method Stubs
 
     func catMeowed() {
-        let stub = CatDelegateStub<Any>(method: .catMeowed())
+        let stub = CatDelegateStub<Void>(method: .catMeowed())
         methodCalls.append(stub)
+        if let closure = closureFor(stub: stub) as? () -> () {
+            closure()
+        }
     }
 
 }
@@ -197,12 +217,12 @@ struct CatStub<T>: Hashable, Equatable {
         return CatStub<Int>(method: .doClassMethod())
     }
 
-    public static func name() -> CatStub<Any> {
-        return CatStub<Any>(method: .name())
+    public static func name() -> CatStub<Void> {
+        return CatStub<Void>(method: .name())
     }
 
-    public static func catMeowed() -> CatStub<Any> {
-        return CatStub<Any>(method: .catMeowed())
+    public static func catMeowed() -> CatStub<Void> {
+        return CatStub<Void>(method: .catMeowed())
     }
 
 }
@@ -213,6 +233,9 @@ struct CatReturn<T> {
 
     func andReturn(_ value: T) {
         fake.setReturnFor(stub: stub, value: value)
+    }
+    func andDo(_ closure: @escaping () -> T) {
+        fake.setClosureFor(stub: stub, closure: closure)
     }
 }
 
@@ -229,6 +252,7 @@ class _FakeCat: Cat {
     // MARK: - Stub Helpers
 
     var stubs = [(Any, Any)]()
+    var closures = [(Any, Any)]()
     static var classStubs = [AnyHashable: Any]()
     private var methodCalls = [Any]()
     private static var classMethodCalls = [Any]()
@@ -246,6 +270,19 @@ class _FakeCat: Cat {
 
     func setReturnFor<T>(stub: CatStub<T>, value: Any) {
         stubs.append((stub, value))
+    }
+
+    func closureFor<T>(stub: CatStub<T>)-> Any? {
+        for tuple in closures {
+            if tuple.0 is CatStub<T> {
+                return tuple.1
+            }
+        }
+        return nil
+    }
+
+    func setClosureFor<T>(stub: CatStub<T>, closure: @escaping () -> T) {
+        closures.append((stub, closure))
     }
 
     func stub<T>(_ stub: CatStub<T>) -> CatReturn<T> {
@@ -289,18 +326,27 @@ class _FakeCat: Cat {
     override func numberOfLives() -> Int {
         let stub = CatStub<Int>(method: .numberOfLives())
         methodCalls.append(stub)
+        if let closure = closureFor(stub: stub) as? () -> Int {
+            return closure()
+        }
         return returnFor(stub: stub) as! Int
     }
 
     override func doStuff() -> Int {
         let stub = CatStub<Int>(method: .doStuff())
         methodCalls.append(stub)
+        if let closure = closureFor(stub: stub) as? () -> Int {
+            return closure()
+        }
         return returnFor(stub: stub) as! Int
     }
 
     override func doStuff(foo: Int) -> Int? {
         let stub = CatStub<Int?>(method: .doStuff_foo(foo))
         methodCalls.append(stub)
+        if let closure = closureFor(stub: stub) as? () -> Int? {
+            return closure()
+        }
         return returnFor(stub: stub) as! Int?
     }
 
@@ -311,13 +357,19 @@ class _FakeCat: Cat {
     }
 
     override func name() {
-        let stub = CatStub<Any>(method: .name())
+        let stub = CatStub<Void>(method: .name())
         methodCalls.append(stub)
+        if let closure = closureFor(stub: stub) as? () -> () {
+            closure()
+        }
     }
 
     override func catMeowed() {
-        let stub = CatStub<Any>(method: .catMeowed())
+        let stub = CatStub<Void>(method: .catMeowed())
         methodCalls.append(stub)
+        if let closure = closureFor(stub: stub) as? () -> () {
+            closure()
+        }
     }
 
 }
