@@ -27,6 +27,7 @@ enum MethodKind: String {
     case InstanceVar = "source.lang.swift.decl.var.instance"
     case Call = "source.lang.swift.expr.call"
     case StaticVar = "source.lang.swift.decl.var.static"
+    case ClassVar = "source.land.swift.decl.var.class"
 }
 
 enum MethodAccessibility: String {

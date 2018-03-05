@@ -127,7 +127,10 @@ private func parseMethods(from json: [String: AnyObject], fileContents: String) 
         
         // Arguments
         if let arguments = methodStructureDict["key.substructure"] as? [[String:AnyObject]] {
-            arguments.forEach({ (argumentStructureDictionary: [String : AnyObject]) in
+            let externalArgumentNames = getExternalArguments(from: methodName) ?? argumentNames
+            
+            for i in 0 ..< externalArgumentNames.count {
+                let argumentStructureDictionary = arguments[i]
                 if let argumentType: String = argumentStructureDictionary["key.typename"] as? String {
                     if let argumentName: String = argumentStructureDictionary["key.name"] as? String {
                         argumentNames.append(argumentName)
@@ -135,7 +138,7 @@ private func parseMethods(from json: [String: AnyObject], fileContents: String) 
                         argumentTypes.append(refinedArgumentType)
                     }
                 }
-            })
+            }
         }
         
         // Signature

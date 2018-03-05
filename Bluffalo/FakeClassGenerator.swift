@@ -109,6 +109,7 @@ class FakeClassGenerator {
         case .InstanceVar: return "var"
         case .Call: return ""
         case .StaticVar: return "static var"
+        case .ClassVar: return ""
         }
     }
 
@@ -125,7 +126,7 @@ class FakeClassGenerator {
         
         code += tab + "\(overrideString)\(methodKindString) \(method.nameWithExternalNames)"
         
-        var stubGeneric = "Any"
+        var stubGeneric = "Void"
         if let returnType = method.returnType {
             code += " -> " + returnType
             stubGeneric = returnType
@@ -159,11 +160,27 @@ class FakeClassGenerator {
             case .Class:
                 code += tab + tab + "return classStubs[stub] as! \(returnType)\n"
             case .Instance:
+                code += """
+                        if let closure = closureFor(stub: stub) as? () -> \(returnType) {
+                            return closure()
+                        }
+                
+                """
+                
+                
                 code += tab + tab + "return returnFor(stub: stub) as! \(returnType)\n"
             default:
                 break
             }
             
+        }
+        else {
+            code += """
+                    if let closure = closureFor(stub: stub) as? () -> () {
+                        closure()
+                    }
+            
+            """
         }
         code += tab + "}\n"
         code += "\n"
@@ -383,6 +400,12 @@ class FakeClassGenerator {
         code += tab + "func andReturn(_ value: T) {\n"
         code += tab + tab + "fake.setReturnFor(stub: stub, value: value)\n"
         code += tab + "}\n"
+        code += """
+            func andDo(_ closure: @escaping () -> T) {
+                fake.setClosureFor(stub: stub, closure: closure)
+            }
+        
+        """
         code += "}\n"
         code += "\n"
         
@@ -406,6 +429,7 @@ class FakeClassGenerator {
     private func generateStubHelpers() -> String {
         var code: String = ""
         code += tab + "var stubs = [(Any, Any)]()\n"
+        code += tab + "var closures = [(Any, Any)]()\n"
         code += tab + "static var classStubs = [AnyHashable: Any]()\n"
         code += tab + "private var methodCalls = [Any]()\n"
         code += tab + "private static var classMethodCalls = [Any]()\n\n"
@@ -424,6 +448,22 @@ class FakeClassGenerator {
         code += tab + "func setReturnFor<T>(stub: \(className)Stub<T>, value: Any) {\n"
         code += tab + tab + "stubs.append((stub, value))\n"
         code += tab + "}\n\n"
+        
+        code += """
+        func closureFor<T>(stub: \(className)Stub<T>)-> Any? {
+            for tuple in closures {
+                if tuple.0 is \(className)Stub<T> {
+                    return tuple.1
+                }
+            }
+            return nil
+        }
+        
+        func setClosureFor<T>(stub: \(className)Stub<T>, closure: @escaping () -> T) {
+            closures.append((stub, closure))
+        }
+
+        """
         
         code += tab + "func stub<T>(_ stub: \(className)Stub<T>) -> \(className)Return<T> {\n"
         code += tab + tab + "return \(className)Return<T>(fake: self, stub: stub)\n"
