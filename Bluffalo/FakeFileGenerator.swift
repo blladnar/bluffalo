@@ -25,14 +25,14 @@ import Foundation
  - parameter module: The module which the class resides in.
  - parameter imports: A list of additional imports to include in the generated fake.
  */
-internal func generateFake(inFile: String, outFile: String, module: String?, imports: [String]?) throws {
+internal func generateFake(inFile: String, outFile: String, module: String?, imports: [String]?, nimble: Bool?) throws {
 
     let file = try loadSwiftFile(at: inFile)
     let classes: [Class] = parse(file: file)
 
     let fakeUrl = URL(fileURLWithPath: outFile)
     
-    try createFake(at: fakeUrl, inFile: inFile, outFile: outFile, classes: classes, module: module, imports: imports)
+    try createFake(at: fakeUrl, inFile: inFile, outFile: outFile, classes: classes, module: module, imports: imports, nimble: nimble)
 }
 
 /**
@@ -74,7 +74,7 @@ internal func loadSwiftFile(at filepath: String) throws -> SwiftFile {
  Create fake class containing all of the faking/stubbing logic.
  
  */
-private func createFake(at fileUrl: URL, inFile: String, outFile: String, classes: [Class], module: String?, imports: [String]?) throws {
+private func createFake(at fileUrl: URL, inFile: String, outFile: String, classes: [Class], module: String?, imports: [String]?, nimble: Bool?) throws {
     var code: String = ""
     
     // CLI command that can be used to regenerate the fake.
@@ -82,14 +82,26 @@ private func createFake(at fileUrl: URL, inFile: String, outFile: String, classe
     "// bluffalo -f \(inFile) -o \(outFile) \(moduleParameter(module))\n\n"
 
     // Additional imports
-    code += additionalImports(from: imports)
+    
+    var moreImports: [String]
+    if let imports = imports {
+        moreImports = imports
+    }
+    else {
+        moreImports = [String]()
+    }
+    
+    if let nimble = nimble, nimble {
+        moreImports.append("Nimble")
+    }
+    code += additionalImports(from: moreImports)
     
     // Testable module import
     code += testableImport(module)
     
     // Generate source code.
     code += classes.reduce("") { (code, classStruct) -> String in
-        let generator = FakeClassGenerator(classStruct: classStruct)
+        let generator = FakeClassGenerator(classStruct: classStruct, nimble: nimble)
         return code + generator.makeFakeClass()
     }
     

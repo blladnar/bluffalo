@@ -28,6 +28,7 @@ class FakeClassGenerator {
 
     private let classPrepend: String
     private let classStruct: Class
+    private let shouldGenerateNimbleMatcher: Bool
     
     private var fakeClassName: String {
         return "\(classPrepend)\(className)"
@@ -49,9 +50,10 @@ class FakeClassGenerator {
         return classStruct.enumName
     }
     
-    init(classStruct: Class, prepend: String = "Fake") {
+    init(classStruct: Class, prepend: String = "Fake", nimble: Bool? = nil) {
         self.classStruct = classStruct
         self.classPrepend = prepend
+        self.shouldGenerateNimbleMatcher = nimble ?? false
     }
     
     // MARK: - Public functions
@@ -64,7 +66,12 @@ class FakeClassGenerator {
         let fakeHelpers = generateFakeHelpers()
         let fakeClass = generateFakeClass()
         
-        return fakeHelpers + fakeClass
+        var nimbleMatcher = ""
+        if shouldGenerateNimbleMatcher {
+            nimbleMatcher += generateNimbleMatcher()
+        }
+        
+        return fakeHelpers + fakeClass + nimbleMatcher
     }
     
     // MARK: - Private functions
@@ -79,7 +86,27 @@ class FakeClassGenerator {
         code += "\n"
         code += generateReturn()
         code += "\n"
+        return code
+    }
+    
+    private func generateNimbleMatcher() -> String {
+        let code = """
 
+        public func haveCalled<T>(_ method: \(className)Stub<T>) -> Predicate<\(fakeClassName)> {
+            return Predicate { actualExpression in
+                var status = PredicateStatus.doesNotMatch
+        
+                if let fake = try actualExpression.evaluate(), fake.didCall(method: method) {
+                    status = .matches
+                }
+        
+                return PredicateResult(status: status, message: .expectedTo("have called \\(method)"))
+            }
+        }
+
+
+        """
+        
         return code
     }
     

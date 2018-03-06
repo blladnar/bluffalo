@@ -25,8 +25,9 @@ let fileOption = StringOption(shortFlag: "f", longFlag: "file", required: true, 
 let outputFileOption = StringOption(shortFlag: "o", longFlag: "outFile", required: true, helpMessage: "The output file")
 let moduleOption = StringOption(shortFlag: "m", longFlag: "module", required: false, helpMessage: "The module that your real class lives in")
 let importsOption = StringOption(shortFlag: "i", longFlag: "imports", required: false, helpMessage: "Any extra imports you want added to the file")
+let nimbleOption = BoolOption(longFlag: "nimble", required: false, helpMessage: "Generates a Nimble matcher when set to true")
 
-cli.addOptions(fileOption, outputFileOption, moduleOption, importsOption)
+cli.addOptions(fileOption, outputFileOption, moduleOption, importsOption, nimbleOption)
 
 do {
     try cli.parse()
@@ -40,13 +41,14 @@ let args = Arguments(
     file: fileOption.value!,
     outFile: outputFileOption.value!,
     module: moduleOption.value,
-    imports: importsOption.value
+    imports: importsOption.value,
+    nimble: nimbleOption.value
 )
 
 // MARK: - Generate fakes
 
 do {
-    try generateFake(inFile: args.file, outFile: args.outFile, module: args.module, imports: args.imports)
+    try generateFake(inFile: args.file, outFile: args.outFile, module: args.module, imports: args.imports, nimble: args.nimble)
 }
 catch {
     exit(EXIT_FAILURE)

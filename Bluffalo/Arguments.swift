@@ -24,16 +24,18 @@ struct Arguments {
     let file: String
     let outFile: String
     let module: String?
+    let nimble: Bool?
     
     private var _imports: [String]?
     var imports: [String]? {
         return _imports
     }
     
-    init(file: String, outFile: String, module: String?, imports: String?) {
+    init(file: String, outFile: String, module: String?, imports: String?, nimble: Bool?) {
         self.file = file
         self.outFile = outFile
         self.module = module
+        self.nimble = nimble
         
         self._imports = parseImports(imports)
     }

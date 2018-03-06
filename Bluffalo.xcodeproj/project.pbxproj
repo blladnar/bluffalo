@@ -21,6 +21,7 @@
 		0720921A1F0AB7C000A2E089 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072092171F0AB7C000A2E089 /* CommandLine.swift */; };
 		0720921B1F0AB7C000A2E089 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072092181F0AB7C000A2E089 /* Option.swift */; };
 		0720921C1F0AB7C000A2E089 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072092191F0AB7C000A2E089 /* StringExtensions.swift */; };
+		0902FBAF204E199B001C57FD /* FakeDogWithNimble.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0902FBAE204E1887001C57FD /* FakeDogWithNimble.txt */; };
 		0D7DFAC41E4BD0580096D4E8 /* FakeFileGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DFAC31E4BD0580096D4E8 /* FakeFileGenerator.swift */; };
 		0DB7551D1E391ACE00ABC1CD /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 0DB7551C1E391ACE00ABC1CD /* Makefile */; };
 		A7D50AAB1D8212200049D633 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D50AAA1D8212200049D633 /* main.swift */; };
@@ -64,6 +65,7 @@
 		072092181F0AB7C000A2E089 /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Option.swift; path = Vendor/CommandLineKit/Option.swift; sourceTree = "<group>"; };
 		072092191F0AB7C000A2E089 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Vendor/CommandLineKit/StringExtensions.swift; sourceTree = "<group>"; };
 		07DE8D7D1F0AEC3400B19666 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0902FBAE204E1887001C57FD /* FakeDogWithNimble.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = FakeDogWithNimble.txt; sourceTree = "<group>"; };
 		0D7DFAC31E4BD0580096D4E8 /* FakeFileGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeFileGenerator.swift; sourceTree = "<group>"; };
 		0DB7551C1E391ACE00ABC1CD /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		A7D50AA71D8212200049D633 /* Bluffalo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Bluffalo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +149,7 @@
 				BB67EFF21DF28C6C009CA1B0 /* Cat.txt */,
 				07079B2E1F0D3F1E00FEF0FA /* Dog.txt */,
 				BBA3EC071DF2933B0012E5E2 /* FakeCat.txt */,
+				0902FBAE204E1887001C57FD /* FakeDogWithNimble.txt */,
 				07079B301F0D499000FEF0FA /* FakeDog.txt */,
 			);
 			name = Data;
@@ -296,6 +299,7 @@
 				BB67EFF31DF28C6C009CA1B0 /* Cat.txt in Resources */,
 				07079B311F0D499000FEF0FA /* FakeDog.txt in Resources */,
 				BBA3EC081DF2933B0012E5E2 /* FakeCat.txt in Resources */,
+				0902FBAF204E199B001C57FD /* FakeDogWithNimble.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

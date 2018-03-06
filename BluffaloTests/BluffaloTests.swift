@@ -69,4 +69,17 @@ class BluffaloTests: XCTestCase {
         let expectedClassString = stringForFile(filepath)
         XCTAssertNil(compareClassStrings(actual: finalClassString, expected: expectedClassString))
     }
+    
+    func testGenerateNimbleMatcher() {
+        let classStructArray: [Class] = classStructForFile("Dog")
+        var finalClassString = ""
+        for classStruct in classStructArray {
+            let classString = FakeClassGenerator(classStruct: classStruct, prepend: "_Fake", nimble: true).makeFakeClass()
+            finalClassString += classString + "\n"
+        }
+        
+        let filepath = resourceFilepath(for: "FakeDogWithNimble")
+        let expectedClassString = stringForFile(filepath)
+        XCTAssertNil(compareClassStrings(actual: finalClassString, expected: expectedClassString))
+    }
 }
