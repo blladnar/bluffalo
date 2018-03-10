@@ -2,3 +2,6 @@ build/
 .bundle/
 Bluffalo/project.xcworkspace/xcuserdata
 Bluffalo/xcuserdata
+Bluffalo.xcodeproj/xcuserdata/
+Bluffalo.xcworkspace/contents.xcworkspacedata
+Bluffalo.xcworkspace/xcuserdata/

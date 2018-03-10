@@ -15,12 +15,16 @@
  * limitations under the License.
  */
 
+protocol ClassGenerator {
+    func makeFakeClass() -> String
+}
+
 import Foundation
 
 /**
  Responsible for generating fake classes.
  */
-class FakeClassGenerator {
+class FakeClassGenerator: ClassGenerator {
     private let tab = "    "
     private let classFunctionsAndArgumentsCalledString: String = "classFunctionsAndArgumentsCalled"
     private let functionsAndArgumentsCalledString: String = "functionsAndArgumentsCalled"

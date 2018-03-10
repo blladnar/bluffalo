@@ -101,7 +101,10 @@ private func createFake(at fileUrl: URL, inFile: String, outFile: String, classe
     
     // Generate source code.
     code += classes.reduce("") { (code, classStruct) -> String in
-        let generator = FakeClassGenerator(classStruct: classStruct, nimble: nimble)
+//        let generator = FakeClassGenerator(classStruct: classStruct, nimble: nimble)
+//        return code + generator.makeFakeClass()
+        
+        let generator = TemplateClassGenerator(classStruct: classStruct, nimble: nimble)
         return code + generator.makeFakeClass()
     }
     

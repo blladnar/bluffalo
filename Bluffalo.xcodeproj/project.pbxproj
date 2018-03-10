@@ -22,6 +22,27 @@
 		0720921B1F0AB7C000A2E089 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072092181F0AB7C000A2E089 /* Option.swift */; };
 		0720921C1F0AB7C000A2E089 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072092191F0AB7C000A2E089 /* StringExtensions.swift */; };
 		0902FBAF204E199B001C57FD /* FakeDogWithNimble.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0902FBAE204E1887001C57FD /* FakeDogWithNimble.txt */; };
+		0902FC41204E2629001C57FD /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC2E204E2628001C57FD /* Template.swift */; };
+		0902FC42204E2629001C57FD /* ForTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC2F204E2628001C57FD /* ForTag.swift */; };
+		0902FC43204E2629001C57FD /* IfTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC30204E2628001C57FD /* IfTag.swift */; };
+		0902FC44204E2629001C57FD /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC31204E2628001C57FD /* Loader.swift */; };
+		0902FC45204E2629001C57FD /* NowTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC32204E2628001C57FD /* NowTag.swift */; };
+		0902FC46204E2629001C57FD /* Include.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC33204E2628001C57FD /* Include.swift */; };
+		0902FC47204E2629001C57FD /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC34204E2628001C57FD /* Variable.swift */; };
+		0902FC48204E2629001C57FD /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC35204E2628001C57FD /* Filters.swift */; };
+		0902FC49204E2629001C57FD /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC36204E2628001C57FD /* Lexer.swift */; };
+		0902FC4A204E2629001C57FD /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC37204E2628001C57FD /* Expression.swift */; };
+		0902FC4B204E2629001C57FD /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC38204E2628001C57FD /* Extension.swift */; };
+		0902FC4C204E2629001C57FD /* FilterTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC39204E2628001C57FD /* FilterTag.swift */; };
+		0902FC4D204E2629001C57FD /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC3A204E2628001C57FD /* Errors.swift */; };
+		0902FC4E204E2629001C57FD /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC3B204E2628001C57FD /* Context.swift */; };
+		0902FC4F204E2629001C57FD /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC3C204E2629001C57FD /* Tokenizer.swift */; };
+		0902FC50204E2629001C57FD /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC3D204E2629001C57FD /* Node.swift */; };
+		0902FC51204E2629001C57FD /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC3E204E2629001C57FD /* Environment.swift */; };
+		0902FC52204E2629001C57FD /* Inheritence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC3F204E2629001C57FD /* Inheritence.swift */; };
+		0902FC53204E2629001C57FD /* StencilParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC40204E2629001C57FD /* StencilParser.swift */; };
+		0902FC55204E2685001C57FD /* PathKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC54204E2685001C57FD /* PathKit.swift */; };
+		0902FC57204E279A001C57FD /* TemplateClassGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902FC56204E279A001C57FD /* TemplateClassGenerator.swift */; };
 		0D7DFAC41E4BD0580096D4E8 /* FakeFileGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DFAC31E4BD0580096D4E8 /* FakeFileGenerator.swift */; };
 		0DB7551D1E391ACE00ABC1CD /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 0DB7551C1E391ACE00ABC1CD /* Makefile */; };
 		A7D50AAB1D8212200049D633 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D50AAA1D8212200049D633 /* main.swift */; };
@@ -66,6 +87,29 @@
 		072092191F0AB7C000A2E089 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Vendor/CommandLineKit/StringExtensions.swift; sourceTree = "<group>"; };
 		07DE8D7D1F0AEC3400B19666 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0902FBAE204E1887001C57FD /* FakeDogWithNimble.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = FakeDogWithNimble.txt; sourceTree = "<group>"; };
+		0902FC2E204E2628001C57FD /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Template.swift; path = Vendor/Stencil/Template.swift; sourceTree = "<group>"; };
+		0902FC2F204E2628001C57FD /* ForTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForTag.swift; path = Vendor/Stencil/ForTag.swift; sourceTree = "<group>"; };
+		0902FC30204E2628001C57FD /* IfTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IfTag.swift; path = Vendor/Stencil/IfTag.swift; sourceTree = "<group>"; };
+		0902FC31204E2628001C57FD /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Loader.swift; path = Vendor/Stencil/Loader.swift; sourceTree = "<group>"; };
+		0902FC32204E2628001C57FD /* NowTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NowTag.swift; path = Vendor/Stencil/NowTag.swift; sourceTree = "<group>"; };
+		0902FC33204E2628001C57FD /* Include.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Include.swift; path = Vendor/Stencil/Include.swift; sourceTree = "<group>"; };
+		0902FC34204E2628001C57FD /* Variable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Variable.swift; path = Vendor/Stencil/Variable.swift; sourceTree = "<group>"; };
+		0902FC35204E2628001C57FD /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Filters.swift; path = Vendor/Stencil/Filters.swift; sourceTree = "<group>"; };
+		0902FC36204E2628001C57FD /* Lexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lexer.swift; path = Vendor/Stencil/Lexer.swift; sourceTree = "<group>"; };
+		0902FC37204E2628001C57FD /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Expression.swift; path = Vendor/Stencil/Expression.swift; sourceTree = "<group>"; };
+		0902FC38204E2628001C57FD /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extension.swift; path = Vendor/Stencil/Extension.swift; sourceTree = "<group>"; };
+		0902FC39204E2628001C57FD /* FilterTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterTag.swift; path = Vendor/Stencil/FilterTag.swift; sourceTree = "<group>"; };
+		0902FC3A204E2628001C57FD /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = Vendor/Stencil/Errors.swift; sourceTree = "<group>"; };
+		0902FC3B204E2628001C57FD /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Context.swift; path = Vendor/Stencil/Context.swift; sourceTree = "<group>"; };
+		0902FC3C204E2629001C57FD /* Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tokenizer.swift; path = Vendor/Stencil/Tokenizer.swift; sourceTree = "<group>"; };
+		0902FC3D204E2629001C57FD /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = Vendor/Stencil/Node.swift; sourceTree = "<group>"; };
+		0902FC3E204E2629001C57FD /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Environment.swift; path = Vendor/Stencil/Environment.swift; sourceTree = "<group>"; };
+		0902FC3F204E2629001C57FD /* Inheritence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Inheritence.swift; path = Vendor/Stencil/Inheritence.swift; sourceTree = "<group>"; };
+		0902FC40204E2629001C57FD /* StencilParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StencilParser.swift; path = Vendor/Stencil/StencilParser.swift; sourceTree = "<group>"; };
+		0902FC54204E2685001C57FD /* PathKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathKit.swift; sourceTree = "<group>"; };
+		0902FC56204E279A001C57FD /* TemplateClassGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateClassGenerator.swift; sourceTree = "<group>"; };
+		09FB25CB204A2388005E8BA4 /* Cat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cat.swift; path = ../../Desktop/Cat.swift; sourceTree = "<group>"; };
+		09FB25CC204A2388005E8BA4 /* FakeCat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeCat.swift; path = ../../Desktop/FakeCat.swift; sourceTree = "<group>"; };
 		0D7DFAC31E4BD0580096D4E8 /* FakeFileGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeFileGenerator.swift; sourceTree = "<group>"; };
 		0DB7551C1E391ACE00ABC1CD /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		A7D50AA71D8212200049D633 /* Bluffalo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Bluffalo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +157,7 @@
 			children = (
 				BB67EFD11DF248C7009CA1B0 /* FakeClassGenerator.swift */,
 				0D7DFAC31E4BD0580096D4E8 /* FakeFileGenerator.swift */,
+				0902FC56204E279A001C57FD /* TemplateClassGenerator.swift */,
 			);
 			name = Generator;
 			sourceTree = "<group>";
@@ -128,6 +173,8 @@
 		072092141F0AB79500A2E089 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				0902FC54204E2685001C57FD /* PathKit.swift */,
+				0902FBB0204E24EB001C57FD /* Stencil */,
 				072092161F0AB7B200A2E089 /* CommandLineKit */,
 			);
 			name = Vendor;
@@ -163,6 +210,32 @@
 			name = Tests;
 			sourceTree = "<group>";
 		};
+		0902FBB0204E24EB001C57FD /* Stencil */ = {
+			isa = PBXGroup;
+			children = (
+				0902FC3B204E2628001C57FD /* Context.swift */,
+				0902FC3E204E2629001C57FD /* Environment.swift */,
+				0902FC3A204E2628001C57FD /* Errors.swift */,
+				0902FC37204E2628001C57FD /* Expression.swift */,
+				0902FC38204E2628001C57FD /* Extension.swift */,
+				0902FC35204E2628001C57FD /* Filters.swift */,
+				0902FC39204E2628001C57FD /* FilterTag.swift */,
+				0902FC2F204E2628001C57FD /* ForTag.swift */,
+				0902FC30204E2628001C57FD /* IfTag.swift */,
+				0902FC33204E2628001C57FD /* Include.swift */,
+				0902FC3F204E2629001C57FD /* Inheritence.swift */,
+				0902FC36204E2628001C57FD /* Lexer.swift */,
+				0902FC31204E2628001C57FD /* Loader.swift */,
+				0902FC3D204E2629001C57FD /* Node.swift */,
+				0902FC32204E2628001C57FD /* NowTag.swift */,
+				0902FC40204E2629001C57FD /* StencilParser.swift */,
+				0902FC2E204E2628001C57FD /* Template.swift */,
+				0902FC3C204E2629001C57FD /* Tokenizer.swift */,
+				0902FC34204E2628001C57FD /* Variable.swift */,
+			);
+			name = Stencil;
+			sourceTree = "<group>";
+		};
 		0DB7551A1E391AA700ABC1CD /* Auxiliary Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +267,8 @@
 		A7D50AA91D8212200049D633 /* Bluffalo */ = {
 			isa = PBXGroup;
 			children = (
+				09FB25CB204A2388005E8BA4 /* Cat.swift */,
+				09FB25CC204A2388005E8BA4 /* FakeCat.swift */,
 				07079B2C1F0D3B5100FEF0FA /* CLI */,
 				07079B2B1F0D3B4200FEF0FA /* Generator */,
 				07079B2A1F0D3B1F00FEF0FA /* Parser */,
@@ -258,7 +333,7 @@
 		A7D50A9F1D8212200049D633 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = pair;
 				TargetAttributes = {
@@ -310,15 +385,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0902FC46204E2629001C57FD /* Include.swift in Sources */,
+				0902FC4F204E2629001C57FD /* Tokenizer.swift in Sources */,
+				0902FC47204E2629001C57FD /* Variable.swift in Sources */,
+				0902FC41204E2629001C57FD /* Template.swift in Sources */,
 				0720921C1F0AB7C000A2E089 /* StringExtensions.swift in Sources */,
 				BB67EFE71DF27366009CA1B0 /* Parser.swift in Sources */,
+				0902FC43204E2629001C57FD /* IfTag.swift in Sources */,
+				0902FC57204E279A001C57FD /* TemplateClassGenerator.swift in Sources */,
 				0720921B1F0AB7C000A2E089 /* Option.swift in Sources */,
+				0902FC4D204E2629001C57FD /* Errors.swift in Sources */,
 				BB67EFD21DF248C7009CA1B0 /* FakeClassGenerator.swift in Sources */,
 				A7E9DEA11D99D1F9004406D7 /* Structures.swift in Sources */,
+				0902FC4B204E2629001C57FD /* Extension.swift in Sources */,
+				0902FC44204E2629001C57FD /* Loader.swift in Sources */,
+				0902FC4A204E2629001C57FD /* Expression.swift in Sources */,
 				0720921A1F0AB7C000A2E089 /* CommandLine.swift in Sources */,
 				0DB7551D1E391ACE00ABC1CD /* Makefile in Sources */,
+				0902FC4E204E2629001C57FD /* Context.swift in Sources */,
+				0902FC51204E2629001C57FD /* Environment.swift in Sources */,
+				0902FC42204E2629001C57FD /* ForTag.swift in Sources */,
+				0902FC48204E2629001C57FD /* Filters.swift in Sources */,
+				0902FC50204E2629001C57FD /* Node.swift in Sources */,
+				0902FC53204E2629001C57FD /* StencilParser.swift in Sources */,
+				0902FC4C204E2629001C57FD /* FilterTag.swift in Sources */,
 				A7D50AAB1D8212200049D633 /* main.swift in Sources */,
+				0902FC49204E2629001C57FD /* Lexer.swift in Sources */,
+				0902FC55204E2685001C57FD /* PathKit.swift in Sources */,
+				0902FC52204E2629001C57FD /* Inheritence.swift in Sources */,
 				0D7DFAC41E4BD0580096D4E8 /* FakeFileGenerator.swift in Sources */,
+				0902FC45204E2629001C57FD /* NowTag.swift in Sources */,
 				07079B221F0AF50200FEF0FA /* SwiftFile.swift in Sources */,
 				07079B271F0B0A1E00FEF0FA /* Arguments.swift in Sources */,
 				07079B291F0D39D900FEF0FA /* BluffaloError.swift in Sources */,

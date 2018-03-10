@@ -57,6 +57,26 @@ struct Method {
     let externalArgumentNames: [String]
     let argumentTypes: [String]
     let returnType: String?
+    let randall: String
+    
+    init(name: String,
+         nameWithExternalNames: String,
+          kind: MethodKind,
+    accessibility: MethodAccessibility,
+    argumentNames: [String],
+    externalArgumentNames: [String],
+    argumentTypes: [String],
+    returnType: String?) {
+        self.name = name
+        self.nameWithExternalNames = nameWithExternalNames
+        self.kind = kind
+        self.accessibility = accessibility
+        self.argumentNames = argumentNames
+        self.externalArgumentNames = externalArgumentNames
+        self.argumentTypes = argumentTypes
+        self.returnType = returnType
+        self.randall = ""
+    }
 }
 
 /**
