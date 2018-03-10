@@ -21,7 +21,9 @@ class TemplateClassGenerator: ClassGenerator {
         let template = Template(templateString: templateString)
         let context = [
             "class": classStruct,
-            "methods": classStruct.methods
+            "methods": classStruct.methods,
+            "classMethods": classStruct.classMethods,
+            "instanceMethods": classStruct.instanceMethods
             ] as [String : Any]
         
         guard let code = try? template.render(context) else {

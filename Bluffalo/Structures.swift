@@ -57,7 +57,8 @@ struct Method {
     let externalArgumentNames: [String]
     let argumentTypes: [String]
     let returnType: String?
-    let randall: String
+    let kindString: String
+    let nameWithoutArguments: String
     
     init(name: String,
          nameWithExternalNames: String,
@@ -75,7 +76,20 @@ struct Method {
         self.externalArgumentNames = externalArgumentNames
         self.argumentTypes = argumentTypes
         self.returnType = returnType
-        self.randall = ""
+        self.nameWithoutArguments = String(name.split(separator: "(", maxSplits: 1, omittingEmptySubsequences: true).first!)
+        self.kindString = stringForMethodKind(methodKind: kind)
+    }
+}
+
+func stringForMethodKind(methodKind: MethodKind) -> String {
+    switch methodKind {
+    case .Class: return "class func"
+    case .Instance: return "func"
+    case .Static: return "static func"
+    case .InstanceVar: return "var"
+    case .Call: return ""
+    case .StaticVar: return "static var"
+    case .ClassVar: return ""
     }
 }
 
@@ -85,6 +99,7 @@ struct Method {
 struct Class {
     let kind: ClassKind
     let name: String
+    let kindString: String
     
     private var _methods: [Method]?
     internal var methods: [Method] {
@@ -95,9 +110,22 @@ struct Class {
         return "\(name)Method"
     }
     
+    internal var classMethods: [Method] {
+        return methods.filter {
+            $0.kind == .Class || $0.kind == .Static
+        }
+    }
+    
+    internal var instanceMethods: [Method] {
+        return methods.filter {
+            return $0.kind == .Instance
+        }
+    }
+    
     init(kind: ClassKind, name: String, methods: [Method]) {
         self.kind = kind
         self.name = name
+        self.kindString = kind.rawValue
         self._methods = onlyRealMethods(methods: methods)
     }
     

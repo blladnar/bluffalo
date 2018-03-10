@@ -131,18 +131,6 @@ class FakeClassGenerator: ClassGenerator {
         
         return code
     }
-    
-    private func stringForMethodKind(methodKind: MethodKind) -> String {
-        switch methodKind {
-        case .Class: return "class func"
-        case .Instance: return "func"
-        case .Static: return "static func"
-        case .InstanceVar: return "var"
-        case .Call: return ""
-        case .StaticVar: return "static var"
-        case .ClassVar: return ""
-        }
-    }
 
     private func generateStubFor(method: Method) -> String {
         var code: String = ""
