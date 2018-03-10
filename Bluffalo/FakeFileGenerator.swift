@@ -25,14 +25,14 @@ import Foundation
  - parameter module: The module which the class resides in.
  - parameter imports: A list of additional imports to include in the generated fake.
  */
-internal func generateFake(inFile: String, outFile: String, module: String?, imports: [String]?, nimble: Bool?) throws {
+internal func generateFake(inFile: String, outFile: String, module: String?, imports: [String]?, nimble: Bool?, template: String?) throws {
 
     let file = try loadSwiftFile(at: inFile)
     let classes: [Class] = parse(file: file)
 
     let fakeUrl = URL(fileURLWithPath: outFile)
     
-    try createFake(at: fakeUrl, inFile: inFile, outFile: outFile, classes: classes, module: module, imports: imports, nimble: nimble)
+    try createFake(at: fakeUrl, inFile: inFile, outFile: outFile, classes: classes, module: module, imports: imports, nimble: nimble, template: template)
 }
 
 /**
@@ -74,7 +74,7 @@ internal func loadSwiftFile(at filepath: String) throws -> SwiftFile {
  Create fake class containing all of the faking/stubbing logic.
  
  */
-private func createFake(at fileUrl: URL, inFile: String, outFile: String, classes: [Class], module: String?, imports: [String]?, nimble: Bool?) throws {
+private func createFake(at fileUrl: URL, inFile: String, outFile: String, classes: [Class], module: String?, imports: [String]?, nimble: Bool?, template: String?) throws {
     var code: String = ""
     
     // CLI command that can be used to regenerate the fake.
@@ -101,10 +101,10 @@ private func createFake(at fileUrl: URL, inFile: String, outFile: String, classe
     
     // Generate source code.
     code += classes.reduce("") { (code, classStruct) -> String in
-//        let generator = FakeClassGenerator(classStruct: classStruct, nimble: nimble)
-//        return code + generator.makeFakeClass()
-        
-        let generator = TemplateClassGenerator(classStruct: classStruct, nimble: nimble)
+        var generator: ClassGenerator = FakeClassGenerator(classStruct: classStruct, nimble: nimble)
+        if let template = template {
+            generator = TemplateClassGenerator(classStruct: classStruct, nimble: nimble, templatePath: template)
+        }
         return code + generator.makeFakeClass()
     }
     

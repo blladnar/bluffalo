@@ -26,8 +26,9 @@ let outputFileOption = StringOption(shortFlag: "o", longFlag: "outFile", require
 let moduleOption = StringOption(shortFlag: "m", longFlag: "module", required: false, helpMessage: "The module that your real class lives in")
 let importsOption = StringOption(shortFlag: "i", longFlag: "imports", required: false, helpMessage: "Any extra imports you want added to the file")
 let nimbleOption = BoolOption(longFlag: "nimble", required: false, helpMessage: "Generates a Nimble matcher when set to true")
+let templateOption = StringOption(longFlag: "template", required: false, helpMessage: "Specift a Stencil tempalate file for your fake")
 
-cli.addOptions(fileOption, outputFileOption, moduleOption, importsOption, nimbleOption)
+cli.addOptions(fileOption, outputFileOption, moduleOption, importsOption, nimbleOption, templateOption)
 
 do {
     try cli.parse()
@@ -42,13 +43,14 @@ let args = Arguments(
     outFile: outputFileOption.value!,
     module: moduleOption.value,
     imports: importsOption.value,
-    nimble: nimbleOption.value
+    nimble: nimbleOption.value,
+    template: templateOption.value
 )
 
 // MARK: - Generate fakes
 
 do {
-    try generateFake(inFile: args.file, outFile: args.outFile, module: args.module, imports: args.imports, nimble: args.nimble)
+    try generateFake(inFile: args.file, outFile: args.outFile, module: args.module, imports: args.imports, nimble: args.nimble, template: args.template)
 }
 catch {
     exit(EXIT_FAILURE)
